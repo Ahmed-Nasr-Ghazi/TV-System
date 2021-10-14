@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Channels Demo</title>
+	
+</head>
+
+<body>
+	
+<div class="container">
+	
+	<h3>Channel Search Result</h3>
+	<hr>
+		
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>name</th>
+				<th>URL</th>
+				<th>Country</th>
+			</tr>
+		</thead>
+		<tbody>
+				<td th:text = "${channel.name}" />
+				<!-- <td th:text = "${channel.URL}" />-->
+				
+				<td> <th:block th:with="link=${channel.URL}">
+         				<a th:href="@{//{link}(link=${link})}" target="_blank">&gt; Click here</a>
+         			</th:block>
+         		</td>
+				
+				<td th:text = "${channel.country}" />
+		</tbody>
+		
+		
+		
+	</table>
+		<hr>
+		<a th:href="@{/channels/list}">Back to Channels List</a>
+</div>
+</body>
+
+</html>
+
+
+
