@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-	<title>Channels Demo</title>
+	<title>Channels List</title>
 	
 </head>
 
@@ -23,17 +23,23 @@
 		<br>
 		<h3>Hello, <span sec:authentication="name"></span></h3>
 		
-		<div sec:authorize="hasRole('ROLE_ADMIN')">  
+		<div sec:authorize="hasRole('ROLE_ADMIN')" class="d-inline-block">  
 			<a th:href="@{/admin/dashboard}"
 			   class="btn btn-info btn-sm">
-				Manage Requests
+				Manage Channels Requests
 			</a>
-	
+		</div>	
+		
+		<div sec:authorize="hasRole('ROLE_ADMIN')" class="d-inline-block">  
+			<a th:href="@{/admin/usersDashboard}"
+			   class="btn btn-info btn-sm">
+				Manage Users Requests
+			</a>
 		</div>	
 		
 	</div>
 	<hr>
-
+	
 	<h3>Channels</h3>
 
 	
@@ -86,7 +92,7 @@
 						<div sec:authorize="hasRole('ROLE_ADMIN')">  
 						
 							<!-- Add "delete" button/link -->					
-							<a th:href="@{/admin/delete(channelName=${channel.name})}"
+							<a th:href="@{/admin/deleteChannel(channelName=${channel.name})}"
 							   class="btn btn-danger btn-sm"
 							   onclick="if (!(confirm('Are you sure you want to delete this channel?'))) return false">
 								Delete

@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-	<title>Channels Demo</title>
+	<title>Search Result</title>
 	
 </head>
 
@@ -17,8 +17,16 @@
 	
 <div class="container">
 	
+	<br>
 	<h3>Channel Search Result</h3>
 	<hr>
+			
+		<!-- Check for registration error -->
+		<div th:if="${searchError}" class="alert alert-danger col-xs-offset-1 col-xs-10">
+			<span th:text="${searchError}"></span>
+		</div>
+	
+
 		
 	<table class="table table-bordered table-striped">
 		<thead class="thead-dark">
@@ -29,11 +37,12 @@
 			</tr>
 		</thead>
 		<tbody>
+
 				<td th:text = "${channel.name}" />
 				<!-- <td th:text = "${channel.URL}" />-->
 				
 				<td> <th:block th:with="link=${channel.URL}">
-         				<a th:href="@{//{link}(link=${link})}" target="_blank">&gt; Click here</a>
+         				<a th:href="@{//{link}(link=${link})}" target="_blank"> WatchNow</a>
          			</th:block>
          		</td>
 				

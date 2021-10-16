@@ -27,14 +27,14 @@
 	</div>
 	<hr>
 
-	<h3>Requested Channels</h3>
-	
+	<h3>Requested Users</h3>
+		
 	<table class="table table-bordered table-striped">
 		<thead class="thead-dark">
 			<tr>
-				<th>name</th>
-				<th>URL</th>
-				<th>Country</th>
+				<th>User Name</th>
+				<th>Email</th>
+				<th>Phone</th>
 				<div sec:authorize="hasRole('ROLE_ADMIN')">  
 					<th>action</th>
 				</div>
@@ -42,13 +42,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each = "channel : ${pendingList}">
-				<td th:text = "${channel.name}" />
-				<td> <th:block th:with="link=${channel.URL}">
-         				<a th:href="@{//{link}(link=${link})}" target="_blank"> WatchNow</a>
-         			</th:block>
-         		</td>
-				<td th:text = "${channel.country}" />
+			<tr th:each = "user : ${pendingUser}">
+				<td th:text = "${user.userName}" />
+				<td th:text = "${user.email}" />
+				<td th:text = "${user.phone}" />
 				
 				<div sec:authorize="hasRole('ROLE_ADMIN')">
 				
@@ -56,11 +53,11 @@
 						<div sec:authorize="hasRole('ROLE_ADMIN')">  
 						
 								
-							<a th:href="@{/admin/acceptChannel(channelName=${channel.name})}"
+							<a th:href="@{/admin/acceptUser(userName=${user.userName})}"
 							   class="btn btn-info btn-sm">
 								Accept
 							</a>				
-							<a th:href="@{/admin/deleteChannel(channelName=${channel.name})}"
+							<a th:href="@{/admin/declineUser(userName=${user.userName})}"
 							   class="btn btn-danger btn-sm"
 							   onclick="if (!(confirm('Are you sure you want to delete this Channel?'))) return false">
 								Decline
